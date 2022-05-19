@@ -1,4 +1,4 @@
-module github.com/cli/oauth
+module github.com/pluralsh/oauth
 
 go 1.13
 

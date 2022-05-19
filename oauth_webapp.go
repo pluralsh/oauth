@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/cli/browser"
-	"github.com/cli/oauth/api"
-	"github.com/cli/oauth/webapp"
+	"github.com/pluralsh/oauth/api"
+	"github.com/pluralsh/oauth/webapp"
 )
 
 // WebAppFlow starts a local HTTP server, opens the web browser to initiate the OAuth Web application

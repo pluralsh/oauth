@@ -8,8 +8,8 @@ import (
 	"os"
 
 	"github.com/cli/browser"
-	"github.com/cli/oauth/api"
-	"github.com/cli/oauth/device"
+	"github.com/pluralsh/oauth/api"
+	"github.com/pluralsh/oauth/device"
 )
 
 // DeviceFlow captures the full OAuth Device flow, including prompting the user to copy a one-time

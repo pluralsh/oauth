@@ -21,7 +21,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/cli/oauth/api"
+	"github.com/pluralsh/oauth/api"
 )
 
 var (
