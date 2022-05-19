@@ -43,11 +43,12 @@ func InitFlow() (*Flow, error) {
 
 // BrowserParams are GET query parameters for initiating the web flow.
 type BrowserParams struct {
-	ClientID    string
-	RedirectURI string
-	Scopes      []string
-	LoginHandle string
-	AllowSignup bool
+	ClientID     string
+	RedirectURI  string
+	Scopes       []string
+	LoginHandle  string
+	AllowSignup  bool
+	ResponseType string
 }
 
 // BrowserURL appends GET query parameters to baseURL and returns the url that the user should
@@ -69,6 +70,9 @@ func (flow *Flow) BrowserURL(baseURL string, params BrowserParams) (string, erro
 	q.Set("state", flow.state)
 	if params.LoginHandle != "" {
 		q.Set("login", params.LoginHandle)
+	}
+	if params.ResponseType != "" {
+		q.Set("response_type", params.ResponseType)
 	}
 	if !params.AllowSignup {
 		q.Set("allow_signup", "false")
