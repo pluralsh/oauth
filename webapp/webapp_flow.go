@@ -21,9 +21,10 @@ type httpClient interface {
 
 // Flow holds the state for the steps of OAuth Web Application flow.
 type Flow struct {
-	server   *localServer
-	clientID string
-	state    string
+	server    *localServer
+	clientID  string
+	state     string
+	grantType string
 }
 
 // InitFlow creates a new Flow instance by detecting a locally available port number.
@@ -100,6 +101,7 @@ func (flow *Flow) AccessToken(c httpClient, tokenURL, clientSecret string) (*api
 
 	resp, err := api.PostForm(c, tokenURL,
 		url.Values{
+			"grant_type":    {"authorization_code"},
 			"client_id":     {flow.clientID},
 			"client_secret": {clientSecret},
 			"code":          {code.Code},
