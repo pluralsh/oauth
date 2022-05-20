@@ -21,10 +21,11 @@ type httpClient interface {
 
 // Flow holds the state for the steps of OAuth Web Application flow.
 type Flow struct {
-	server    *localServer
-	clientID  string
-	state     string
-	grantType string
+	server      *localServer
+	clientID    string
+	state       string
+	grantType   string
+	redirectURI string
 }
 
 // InitFlow creates a new Flow instance by detecting a locally available port number.
@@ -63,6 +64,7 @@ func (flow *Flow) BrowserURL(baseURL string, params BrowserParams) (string, erro
 	ru.Host = fmt.Sprintf("%s:%d", ru.Hostname(), flow.server.Port())
 	flow.server.CallbackPath = ru.Path
 	flow.clientID = params.ClientID
+	flow.redirectURI = params.RedirectURI
 
 	q := url.Values{}
 	q.Set("client_id", params.ClientID)
@@ -106,6 +108,7 @@ func (flow *Flow) AccessToken(c httpClient, tokenURL, clientSecret string) (*api
 			"client_secret": {clientSecret},
 			"code":          {code.Code},
 			"state":         {flow.state},
+			"redirect_uri":  {flow.redirectURI},
 		})
 	if err != nil {
 		return nil, err
