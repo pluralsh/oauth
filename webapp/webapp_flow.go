@@ -64,7 +64,7 @@ func (flow *Flow) BrowserURL(baseURL string, params BrowserParams) (string, erro
 	ru.Host = fmt.Sprintf("%s:%d", ru.Hostname(), flow.server.Port())
 	flow.server.CallbackPath = ru.Path
 	flow.clientID = params.ClientID
-	flow.redirectURI = params.RedirectURI
+	flow.redirectURI = ru.String()
 
 	q := url.Values{}
 	q.Set("client_id", params.ClientID)
