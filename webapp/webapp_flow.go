@@ -24,7 +24,6 @@ type Flow struct {
 	server      *localServer
 	clientID    string
 	state       string
-	grantType   string
 	redirectURI string
 }
 
