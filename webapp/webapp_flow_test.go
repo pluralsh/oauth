@@ -144,7 +144,7 @@ func TestFlow_AccessToken(t *testing.T) {
 	if apiPost.url != "https://github.com/access_token" {
 		t.Errorf("HTTP POST to %q", apiPost.url)
 	}
-	if params := apiPost.params.Encode(); params != "client_id=CLIENT-ID&client_secret=OAUTH-SEKRIT&code=ABC-123&state=xy%2Fz" {
+	if params := apiPost.params.Encode(); params != "client_id=CLIENT-ID&client_secret=OAUTH-SEKRIT&code=ABC-123&grant_type=authorization_code&redirect_uri=&state=xy%2Fz" {
 		t.Errorf("HTTP POST params: %v", params)
 	}
 
